@@ -21,6 +21,16 @@
                     width="60">
             </el-table-column>
             <el-table-column
+                    label="商品图片"
+                    width="130">
+                <template slot-scope="scope">
+                    <el-image
+                            style="width: 100px; height: 100px"
+                            :src="scope.row.imgs"
+                    ></el-image>
+                </template>
+            </el-table-column>
+            <el-table-column
                     prop="goods"
                     label="商品名称"
                     width="120">
@@ -49,6 +59,16 @@
                     prop="state"
                     label="状态"
                     width="120">
+            </el-table-column>
+            <el-table-column
+                    label="评价"
+                    width="120">
+                <template slot-scope="scope">
+                    <el-rate
+                            v-model="scope.row.ratevalue"
+                            show-text>
+                    </el-rate>
+                </template>
             </el-table-column>
             <el-table-column
                     prop="reason"
@@ -100,7 +120,7 @@
         data() {
             return {
                 index:'',
-                shops:'虾米',
+                shops:'',
                 announcement:'',
                 id:'',
                 tableData: [],
